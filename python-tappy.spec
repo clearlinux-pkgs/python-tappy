@@ -4,7 +4,7 @@
 #
 Name     : python-tappy
 Version  : 1.8
-Release  : 4
+Release  : 5
 URL      : https://pypi.python.org/packages/source/t/tap.py/tap.py-1.8.tar.gz
 Source0  : https://pypi.python.org/packages/source/t/tap.py/tap.py-1.8.tar.gz
 Summary  : Test Anything Protocol (TAP) tools
