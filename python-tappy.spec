@@ -4,7 +4,7 @@
 #
 Name     : python-tappy
 Version  : 1.8
-Release  : 6
+Release  : 7
 URL      : https://pypi.python.org/packages/source/t/tap.py/tap.py-1.8.tar.gz
 Source0  : https://pypi.python.org/packages/source/t/tap.py/tap.py-1.8.tar.gz
 Summary  : Test Anything Protocol (TAP) tools
@@ -12,12 +12,19 @@ Group    : Development/Tools
 License  : BSD-2-Clause
 Requires: python-tappy-bin
 Requires: python-tappy-python
+Requires: Pygments
+Requires: argparse
+Requires: nose
+Requires: py
+Requires: pytest
 BuildRequires : Babel-python
 BuildRequires : Pygments
 BuildRequires : funcsigs-python
 BuildRequires : nose-python
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : py-python
+BuildRequires : pytest-python
 BuildRequires : python-dev
 BuildRequires : python-mock-python
 BuildRequires : python3-dev
@@ -47,8 +54,6 @@ bin components for the python-tappy package.
 %package python
 Summary: python components for the python-tappy package.
 Group: Default
-Requires: Pygments
-Requires: nose-python
 
 %description python
 python components for the python-tappy package.
@@ -58,6 +63,8 @@ python components for the python-tappy package.
 %setup -q -n tap.py-1.8
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1489435943
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -67,9 +74,10 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
+export SOURCE_DATE_EPOCH=1489435943
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
