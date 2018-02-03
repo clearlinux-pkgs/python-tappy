@@ -4,14 +4,13 @@
 #
 Name     : python-tappy
 Version  : 2.2
-Release  : 12
+Release  : 13
 URL      : https://github.com/python-tap/tappy/archive/v2.2.tar.gz
 Source0  : https://github.com/python-tap/tappy/archive/v2.2.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: python-tappy-bin
-Requires: python-tappy-legacypython
 Requires: python-tappy-python3
 Requires: python-tappy-python
 BuildRequires : Babel
@@ -44,19 +43,9 @@ Group: Binaries
 bin components for the python-tappy package.
 
 
-%package legacypython
-Summary: legacypython components for the python-tappy package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the python-tappy package.
-
-
 %package python
 Summary: python components for the python-tappy package.
 Group: Default
-Requires: python-tappy-legacypython
 Requires: python-tappy-python3
 
 %description python
@@ -80,8 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1515419648
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1517697524
 python3 setup.py build -b py3
 
 %check
@@ -90,10 +78,8 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1515419648
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -105,10 +91,6 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 /usr/bin/tap
 /usr/bin/tappy
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
