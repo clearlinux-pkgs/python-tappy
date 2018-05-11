@@ -4,7 +4,7 @@
 #
 Name     : python-tappy
 Version  : 2.2
-Release  : 14
+Release  : 15
 URL      : https://github.com/python-tap/tappy/archive/v2.2.tar.gz
 Source0  : https://github.com/python-tap/tappy/archive/v2.2.tar.gz
 Summary  : No detailed summary available
@@ -20,6 +20,7 @@ BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : python-dev
+BuildRequires : python-mock-python
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : tox
@@ -69,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517697524
+export SOURCE_DATE_EPOCH=1526070196
 python3 setup.py build -b py3
 
 %check
