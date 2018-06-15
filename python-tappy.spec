@@ -4,7 +4,7 @@
 #
 Name     : python-tappy
 Version  : 2.4
-Release  : 17
+Release  : 18
 URL      : https://github.com/python-tap/tappy/archive/v2.4.tar.gz
 Source0  : https://github.com/python-tap/tappy/archive/v2.4.tar.gz
 Summary  : No detailed summary available
