@@ -4,7 +4,7 @@
 #
 Name     : python-tappy
 Version  : 2.4
-Release  : 20
+Release  : 21
 URL      : https://github.com/python-tap/tappy/archive/v2.4.tar.gz
 Source0  : https://github.com/python-tap/tappy/archive/v2.4.tar.gz
 Summary  : No detailed summary available
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: python-tappy-bin
 Requires: python-tappy-python3
+Requires: python-tappy-license
 Requires: python-tappy-python
 BuildRequires : Babel
 BuildRequires : pbr
@@ -19,8 +20,7 @@ BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-
-BuildRequires : python-mock-python
+BuildRequires : python-mock
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : tox
@@ -39,9 +39,18 @@ tappy
 %package bin
 Summary: bin components for the python-tappy package.
 Group: Binaries
+Requires: python-tappy-license
 
 %description bin
 bin components for the python-tappy package.
+
+
+%package license
+Summary: license components for the python-tappy package.
+Group: Default
+
+%description license
+license components for the python-tappy package.
 
 
 %package python
@@ -70,16 +79,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1527655366
+export SOURCE_DATE_EPOCH=1530379343
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/python-tappy
+cp LICENSE %{buildroot}/usr/share/doc/python-tappy/LICENSE
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -92,6 +103,10 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 /usr/bin/tap
 /usr/bin/tappy
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/python-tappy/LICENSE
 
 %files python
 %defattr(-,root,root,-)
