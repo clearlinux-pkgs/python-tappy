@@ -4,7 +4,7 @@
 #
 Name     : python-tappy
 Version  : 2.6.2
-Release  : 32
+Release  : 33
 URL      : https://github.com/python-tap/tappy/archive/v2.6.2/tappy-2.6.2.tar.gz
 Source0  : https://github.com/python-tap/tappy/archive/v2.6.2/tappy-2.6.2.tar.gz
 Summary  : Test Anything Protocol (TAP) tools for Python
