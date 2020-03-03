@@ -4,7 +4,7 @@
 #
 Name     : python-tappy
 Version  : 3.0
-Release  : 34
+Release  : 35
 URL      : https://github.com/python-tap/tappy/archive/v3.0/tappy-3.0.tar.gz
 Source0  : https://github.com/python-tap/tappy/archive/v3.0/tappy-3.0.tar.gz
 Summary  : Test Anything Protocol (TAP) tools for Python
@@ -77,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578691852
+export SOURCE_DATE_EPOCH=1583215417
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
